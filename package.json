@@ -11,6 +11,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "commit": "git-cz",
     "lint": "yarn lint:js && yarn lint:ts",
     "lint:js": "./node_modules/.bin/eslint --color --ext .js,.jsx .",
     "lint:ts": "./node_modules/.bin/eslint --color --ext .ts,.tsx .",
@@ -23,6 +24,21 @@
     "format": "yarn lint:js --fix && yarn lint:ts --fix",
     "storybook": "start-storybook",
     "storybook:build": "build-storybook -c .storybook -o .out"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.tsx": [
+      "pretty-quick --staged"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
   },
   "dependencies": {
     "@types/react-helmet": "^5.0.15",
@@ -41,6 +57,14 @@
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "cz-emoji": "^1.2.1",
+    "commitizen": "^4.0.5",
+    "commitlint-config-gitmoji": "^1.0.1",
+    "@callstack/eslint-config": "^9.1.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "pretty-quick": "^2.0.1",
+    "lint-staged": "^10.2.2",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.9.6",
