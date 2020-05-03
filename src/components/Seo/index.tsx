@@ -4,19 +4,19 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+import {graphql, useStaticQuery} from 'gatsby'
+import * as React from 'react'
+import {Helmet} from 'react-helmet'
 
-import * as React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
 interface Props {
-  description: string
-  lang: string
-  meta: any
   title: string
+  description?: string
+  lang?: string
+  meta?: any
 }
 
-const SEO: React.FC<Props> = ({
+export const SEO: React.FC<Props> = ({
   description = "",
   lang = "en",
   meta = [],
@@ -83,4 +83,3 @@ const SEO: React.FC<Props> = ({
   )
 }
 
-export default SEO

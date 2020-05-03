@@ -4,13 +4,15 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+import './layout.css'
 
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import Header from "./header"
-import "./layout.css"
+import {graphql, useStaticQuery} from 'gatsby'
+import React from 'react'
 
-const Layout: React.FC = ({ children }) => {
+import {Header} from '../Header'
+
+
+export const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -42,4 +44,3 @@ const Layout: React.FC = ({ children }) => {
   )
 }
 
-export default Layout
