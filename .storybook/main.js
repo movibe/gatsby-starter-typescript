@@ -1,4 +1,4 @@
-module.exports =  {
+module.exports = {
   stories: ['../src/components/**/*.story.tsx'],
   addons: [
     // {
@@ -10,12 +10,12 @@ module.exports =  {
     //   },
     // },
 
-      '@storybook/addon-options',
-      '@storybook/addon-storysource',
-      '@storybook/addon-viewport',
-      'storybook-dark-mode',
-      '@storybook/addon-actions',
-      '@storybook/addon-knobs',
+    '@storybook/addon-options',
+    '@storybook/addon-storysource',
+    '@storybook/addon-viewport',
+    'storybook-dark-mode',
+    '@storybook/addon-actions',
+    '@storybook/addon-knobs',
   ],
   webpackFinal: async (config) => {
     config.module.rules.push(
@@ -24,20 +24,20 @@ module.exports =  {
         test: /\.(js|jsx)$/,
         use: [
           {
-            loader: require.resolve("babel-loader"),
+            loader: require.resolve('babel-loader'),
             options: {
               presets: [
                 // use @babel/preset-react for JSX and env (instead of staged presets)
-                require.resolve("@babel/preset-react"),
-                require.resolve("@babel/preset-env"),
+                require.resolve('@babel/preset-react'),
+                require.resolve('@babel/preset-env'),
               ],
               plugins: [
                 // use @babel/plugin-proposal-class-properties for class arrow functions
-                require.resolve("@babel/plugin-proposal-class-properties"),
+                require.resolve('@babel/plugin-proposal-class-properties'),
                 // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-                require.resolve("babel-plugin-remove-graphql-queries"),
+                require.resolve('babel-plugin-remove-graphql-queries'),
                 // use babel-plugin-react-docgen to ensure PropTables still appear
-                require.resolve("babel-plugin-react-docgen"),
+                require.resolve('babel-plugin-react-docgen'),
               ],
             },
           },
@@ -49,42 +49,42 @@ module.exports =  {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: require.resolve("babel-loader"),
+            loader: require.resolve('babel-loader'),
             options: {
               presets: [
                 // use @babel/preset-react for JSX and env (instead of staged presets)
-                require.resolve("@babel/preset-react"),
-                require.resolve("@babel/preset-env"),
-                require.resolve("@babel/preset-typescript"),
+                require.resolve('@babel/preset-react'),
+                require.resolve('@babel/preset-env'),
+                require.resolve('@babel/preset-typescript'),
               ],
               plugins: [
                 // use @babel/plugin-proposal-class-properties for class arrow functions
-                require.resolve("@babel/plugin-proposal-class-properties"),
+                require.resolve('@babel/plugin-proposal-class-properties'),
                 // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
-                require.resolve("babel-plugin-remove-graphql-queries"),
+                require.resolve('babel-plugin-remove-graphql-queries'),
               ],
             },
           },
           {
-            loader: require.resolve("react-docgen-typescript-loader"),
+            loader: require.resolve('react-docgen-typescript-loader'),
             options: {
               propFilter: (prop) => {
                 if (prop.parent == null) {
-                  return true;
+                  return true
                 }
                 // Filter out props inherited from extending interface with React.HTMLProps< - element - >
                 return (
-                  prop.parent.fileName.indexOf("node_modules/@types/react") < 0
-                );
+                  prop.parent.fileName.indexOf('node_modules/@types/react') < 0
+                )
               },
             },
           },
         ],
         exclude: [/node_modules\/(?!(gatsby)\/)/],
-      }
-    );
+      },
+    )
 
-    config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.extensions.push('.ts', '.tsx')
 
     config.module.rules.push({
       test: /\.story\.tsx?$/,
@@ -95,9 +95,8 @@ module.exports =  {
         },
       ],
       enforce: 'pre',
-    });
+    })
 
-    return config;
+    return config
   },
 }
-

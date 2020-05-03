@@ -8,11 +8,16 @@
     "allowJs": false,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDirs": ["."],
-    "baseUrl": ".",
+    /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "baseUrl": "src",
+    /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "~": ["src/*"]
+      "*": ["*"],
+      "~/*": ["*"],
+      "assets": ["../assets"]
     },
+    /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    "rootDirs": ["./src"],
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,

@@ -1,6 +1,6 @@
-import {action} from '@storybook/addon-actions'
-import {INITIAL_VIEWPORTS} from '@storybook/addon-viewport'
-import {addParameters} from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { addParameters } from '@storybook/react'
 
 import App from '../gatsby-config'
 
@@ -19,7 +19,7 @@ global.__PATH_PREFIX__ = ''
 // Navigating through a gatsby app using gatsby-link or any other gatsby component will use the `___navigate` method.
 // In storybook it doesn't make sense to do an actual navigate, instead we want to log an action. Checkout the actions addon docs https://github.com/storybookjs/storybook/tree/master/addons/actions.
 
-window.___navigate = pathname => {
+window.___navigate = (pathname) => {
   action('NavigateTo:')(pathname)
 }
 
